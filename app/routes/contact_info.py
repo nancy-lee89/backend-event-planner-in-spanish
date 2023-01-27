@@ -11,10 +11,10 @@ contact_info_bp = Blueprint("contact_info_bp", __name__, url_prefix="/contact_in
 def add_contact_info():
     request_body = request.get_json()
     
-    if "name" not in request_body or "email" not in request_body:
+    if "first_name" not in request_body or "email" not in request_body:
         return jsonify({"Details": "Missing information"}),400
 
-    new_contact_info = Contact_info(first_name=request_body["name"],last_name=request_body["last_name"], email=request_body["email"])
+    new_contact_info = Contact_info(first_name=request_body["first_name"], last_name=request_body["last_name"], email=request_body["email"])
 
     db.session.add(new_contact_info)
     db.session.commit()
@@ -38,7 +38,7 @@ def get_all_contact_info():
     return jsonify(response), 200
 
 # GET ONE CONTACT INFO
-@contact_info_bp.route("<contact_id>", methods=["GET"])
+@contact_info_bp.route("/<contact_id>", methods=["GET"])
 def get_one_contact_info(contact_id):
     
     selected_contact_info = get_one_contact_info_or_abort(contact_id)
