@@ -5,6 +5,7 @@ import datetime
 class Event_info(db.Model):
     event_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     # Should we add the event_time start and end 
+    event_name = db.Column(db.String)
     event_date = db.Column(db.Date)
     event_time_start = db.Column(db.DateTime)
     event_time_end = db.Column(db.DateTime)
@@ -33,6 +34,7 @@ class Event_info(db.Model):
         return {
                 "event_id": self.event_id,
                 "event_date": self.event_date, 
+                "event_name" :self.event_name, 
                 "event_time_start": self.event_time_start, 
                 "event_time_end": self.event_time_end, 
                 "event_link": self.event_link, 
