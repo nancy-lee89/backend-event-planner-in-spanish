@@ -1,9 +1,11 @@
 from app import db
+import datetime
+
 
 class Event_info(db.Model):
     event_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     # Should we add the event_time start and end 
-    event_date = db.db.Column(db.DateTime.date)
+    event_date = db.Column(db.Date)
     event_time_start = db.Column(db.DateTime)
     event_time_end = db.Column(db.DateTime)
 
