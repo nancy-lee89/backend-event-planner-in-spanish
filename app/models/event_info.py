@@ -7,8 +7,8 @@ class Event_info(db.Model):
     # Should we add the event_time start and end 
     event_name = db.Column(db.String)
     event_date = db.Column(db.Date)
-    event_time_start = db.Column(db.Time)
-    event_time_end = db.Column(db.Time)
+    event_time_start = db.Column(db.DateTime)
+    event_time_end = db.Column(db.DateTime)
 
     event_link = db.Column(db.String)
 
