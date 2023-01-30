@@ -25,7 +25,7 @@ def add_event():
 
     new_event = Event_info(event_date=request_body["event_date"], event_name=request_body["event_name"],event_time_start=request_body["event_time_start"], event_address = request_body["event_address"])
 
-
+    print(request_body)
     db.session.add(new_event)
     db.session.commit()
 

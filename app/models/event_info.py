@@ -40,7 +40,7 @@ class Event_info(db.Model):
                 "event_link": self.event_link, 
                 "event_latitude": self.event_latitude, 
                 "event_longitude": self.event_longitude,
-                "event_for_famliy": self.event_for_famliy,
+                "event_for_family": self.event_for_family,
                 "event_for_adults": self.event_for_adults,
                 "event_a_concert": self.event_a_concert, 
                 "event_free": self.event_free,
