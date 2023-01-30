@@ -7,8 +7,8 @@ class Event_info(db.Model):
     # Should we add the event_time start and end 
     event_name = db.Column(db.String)
     event_date = db.Column(db.Date)
-    event_time_start = db.Column(db.DateTime)
-    event_time_end = db.Column(db.DateTime)
+    event_time_start = db.Column(db.Time)
+    event_time_end = db.Column(db.Time)
 
     event_link = db.Column(db.String)
 
@@ -17,7 +17,7 @@ class Event_info(db.Model):
     event_longitude = db.Column(db.Integer)
 
     # Or should we have and then find a way to post true with a specific filter 
-    event_for_famliy = db.Column(db.Boolean)
+    event_for_family = db.Column(db.Boolean)
     event_for_adults = db.Column(db.Boolean)
     event_a_concert = db.Column(db.Boolean)
     event_free = db.Column(db.Boolean)
@@ -25,8 +25,8 @@ class Event_info(db.Model):
 
 
     # This can be information we give to the user say they can use it for refrence
-    event_address = db.Column(db.Integer)
-    event_city = db.Column(db.Integer)
+    event_address = db.Column(db.String)
+    event_city = db.Column(db.String)
     event_zipcode = db.Column(db.Integer)
     
 
