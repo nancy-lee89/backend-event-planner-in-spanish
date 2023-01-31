@@ -74,8 +74,6 @@ def delete_event(event_id):
     db.session.commit()
     return jsonify(f"successfully deleted {chosen_event.event_name}"), 200
 
-
-
 # Get a patch to modify the event 
 @event_info_bp.route("/<event_id>", methods=["PATCH"])
 def update_event_info(event_id):
@@ -87,24 +85,47 @@ def update_event_info(event_id):
     if "event_name" in request_body:
         chosen_event.event_name = request_body["event_name"]
 
-
-    # if "event_date" in request_body:
-    #     chosen_event.event_date = request_body["event_date"]
+    if "event_date" in request_body:
+        chosen_event.event_date = request_body["event_date"]
     
-    # chosen_event.event_name = request_body["event_name"]
-    # chosen_event.event_time_start = request_body["event_time_start"]
-    # chosen_event.event_time_end = request_body["event_time_end"]
-    # chosen_event.event_link = request_body["event_link"]
-    # chosen_event.event_latitude = request_body["event_latitude"]
-    # chosen_event.event_longitude = request_body["event_longitude"]
-    # chosen_event.event_for_family = request_body["event_for_family"]
-    # chosen_event.event_for_adults = request_body["event_for_adults"]
-    # chosen_event.event_a_concert = request_body["event_a_concert"] 
-    # chosen_event.event_free = request_body["event_free"]
-    # chosen_event.event_low_cost = request_body["event_low_cost"]
-    # chosen_event.event_address = request_body["event_address"]
-    # chosen_event.event_city = request_body["event_city"] 
-    # chosen_event.event_zipcode = request_body["event_zipcode"]
+    if "event_time_start" in request_body:
+        chosen_event.event_time_start = request_body["event_time_start"]
+
+    if "event_time_end" in request_body:
+        chosen_event.event_time_end = request_body["event_time_end"]
+
+    if "event_link" in request_body:
+        chosen_event.event_link = request_body["event_link"]
+
+    if "event_latitude" in request_body:
+        chosen_event.event_latitude = request_body["event_latitude"]
+
+    if "event_longitude" in request_body:
+        chosen_event.event_longitude = request_body["event_longitude"]
+
+    if "event_for_family" in request_body:
+        chosen_event.event_for_family = request_body["event_for_family"]
+
+    if "event_for_adults" in request_body:
+        chosen_event.event_for_adults = request_body["event_for_adults"]
+
+    if "event_a_concert" in request_body:
+        chosen_event.event_a_concert = request_body["event_a_concert"]
+
+    if "event_free" in request_body:
+        chosen_event.event_free = request_body["event_free"]
+
+    if "event_low_cost" in request_body:
+        chosen_event.event_low_cost = request_body["event_low_cost"]
+
+    if "event_address" in request_body:
+        chosen_event.event_address = request_body["event_address"]
+
+    if "event_city" in request_body:
+        chosen_event.event_city = request_body["event_city"]
+
+    if "event_zipcode" in request_body:
+        chosen_event.event_zipcode = request_body["event_zipcode"]
     
     db.session.commit()
 
