@@ -35,7 +35,21 @@ def add_event():
                 or "event_address" not in request_body:
         return jsonify({"details": "Invalid data"}),400
 
-    new_event = Event_info(event_date=request_body["event_date"], event_name=request_body["event_name"],event_time_start=request_body["event_time_start"], event_address = request_body["event_address"])
+    new_event = Event_info(event_date = request_body["event_date"], 
+                        event_name = request_body["event_name"],
+                        event_time_start = request_body["event_time_start"], 
+                        event_address = request_body["event_address"],
+                        event_time_end = request_body["event_time_end"],
+                        event_link = request_body["event_link"],
+                        event_latitude = request_body["event_latitude"],
+                        event_longitude = request_body["event_longitude"],
+                        event_for_family = request_body["event_for_family"],
+                        event_for_adults = request_body["event_for_adults"],
+                        event_a_concert = request_body["event_a_concert"],
+                        event_free = request_body["event_free"],
+                        event_low_cost = request_body["event_low_cost"],
+                        event_city = request_body["event_city"],
+                        event_zipcode = request_body["event_zipcode"])
 
     print(request_body)
     db.session.add(new_event)
