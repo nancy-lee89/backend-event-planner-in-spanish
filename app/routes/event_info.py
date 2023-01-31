@@ -12,6 +12,18 @@ event_info_bp = Blueprint("event_info_bp", __name__, url_prefix="/event_info")
 # Get a patch to modify the event 
 # Render the specific date and the events of true or false
 
+
+def get_event_or_abort(event_id):
+    try:
+        event_id = int(event_id)
+    except:
+        abort(make_response({"message": f"Event {event_id} invalid."}, 400))
+    event_info = Event_info.query.get(event_id)
+    if not event_info:
+        abort(make_response({"message": f"Event {event_id} not found."}, 404))
+    return event_info
+
+
 # Post one event:
 @event_info_bp.route("", methods = ["POST"])
 def add_event():
@@ -45,3 +57,24 @@ def get_all_events():
         
     return jsonify(response), 200
 
+# Routes Get all the events by date
+
+
+# Get one route 
+@event_info_bp.route("/<event_id>", methods=["GET"])
+def get_one_event(event_id):
+    chosen_event = get_event_or_abort(event_id)  
+    return jsonify(Event_info.to_dict(chosen_event)), 200
+
+# # Then deleted a specific event 
+# @event_info_bp.route("/<event_id>", methods=["Delete"])
+# def delete_event(event_id):
+#     chosen_event = get_event_or_abort(event_id)
+#     db.session.delete(event_id)
+#     db.session.commit()
+#     return jsonify(f"successfully deleted {chosen_event.event_name}"), 200
+
+
+
+# Get a patch to modify the event 
+# Render the specific date and the events of true or false
