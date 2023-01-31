@@ -56,3 +56,12 @@ def delete_one_contact_info(contact_id):
     db.session.commit()
 
     return jsonify({"details": f'Contact Info # {contact_id} successfully deleted'}), 200
+
+
+# GET ONE CONTACT INFO extra
+@contact_info_bp.route("/event_types", methods=["GET"])
+def get_event_types():
+    
+    fake_event_type = ['sport', 'family', 'free', 'concert', 'farmer market']
+    
+    return jsonify(fake_event_type), 200
