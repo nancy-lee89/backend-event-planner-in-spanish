@@ -67,7 +67,7 @@ def get_one_event(event_id):
     return jsonify(Event_info.to_dict(chosen_event)), 200
 
 # Then deleted a specific event 
-@event_info_bp.route("/<event_id>", methods=["delete"])
+@event_info_bp.route("/<event_id>", methods=["DELETE"])
 def delete_event(event_id):
     chosen_event = get_event_or_abort(event_id)
     db.session.delete(chosen_event)
@@ -77,4 +77,32 @@ def delete_event(event_id):
 
 
 # Get a patch to modify the event 
+@event_info_bp.route("/<event_id>", methods=["PUT"])
+def update_event_info(event_id):
+    chosen_event = get_event_or_abort(event_id)
+    
+    request_body = request.get_json()
+
+    chosen_event.event_id = request_body["event_id"]
+    chosen_event.event_date = request_body["event_date"]
+    chosen_event.event_name = request_body["event_name"]
+    chosen_event.event_time_start = request_body["event_time_start"]
+    chosen_event.event_time_end = request_body["event_time_end"]
+    chosen_event.event_link = request_body["event_link"]
+    chosen_event.event_latitude = request_body["event_latitude"]
+    chosen_event.event_longitude = request_body["event_longitude"]
+    chosen_event.event_for_family = request_body["event_for_family"]
+    chosen_event.event_for_adults = request_body["event_for_adults"]
+    chosen_event.event_a_concert = request_body["event_a_concert"] 
+    chosen_event.event_free = request_body["event_free"]
+    chosen_event.event_low_cost = request_body["event_low_cost"]
+    chosen_event.event_address = request_body["event_address"]
+    chosen_event.event_city = request_body["event_city"] 
+    chosen_event.event_zipcode = request_body["event_zipcode"]
+    
+    db.session.commit()
+
+    return jsonify({f"message": f"Successfully replaced event with id `{event_id}`"}), 200
+
+
 # Render the specific date and the events of true or false
