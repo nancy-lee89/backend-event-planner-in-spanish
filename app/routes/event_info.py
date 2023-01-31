@@ -60,19 +60,19 @@ def get_all_events():
 # Routes Get all the events by date
 
 
-# Get one route 
+# Get one event route 
 @event_info_bp.route("/<event_id>", methods=["GET"])
 def get_one_event(event_id):
     chosen_event = get_event_or_abort(event_id)  
     return jsonify(Event_info.to_dict(chosen_event)), 200
 
-# # Then deleted a specific event 
-# @event_info_bp.route("/<event_id>", methods=["Delete"])
-# def delete_event(event_id):
-#     chosen_event = get_event_or_abort(event_id)
-#     db.session.delete(event_id)
-#     db.session.commit()
-#     return jsonify(f"successfully deleted {chosen_event.event_name}"), 200
+# Then deleted a specific event 
+@event_info_bp.route("/<event_id>", methods=["delete"])
+def delete_event(event_id):
+    chosen_event = get_event_or_abort(event_id)
+    db.session.delete(chosen_event)
+    db.session.commit()
+    return jsonify(f"successfully deleted {chosen_event.event_name}"), 200
 
 
 
