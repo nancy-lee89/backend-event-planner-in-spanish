@@ -2,27 +2,13 @@ from flask import Blueprint, request, jsonify, make_response, abort
 from app import db
 from app.models.contact_info import Contact_info
 from app.models.event_info import Event_info
+from ..routes.routes_helper import get_event_or_abort
 
 # The Blueprint 
 event_info_bp = Blueprint("event_info_bp", __name__, url_prefix="/event_info")
 
-
 # Routes Get all the events by date
-# Then deleted a specific event 
-# Get a patch to modify the event 
 # Render the specific date and the events of true or false
-
-
-def get_event_or_abort(event_id):
-    try:
-        event_id = int(event_id)
-    except:
-        abort(make_response({"message": f"Event {event_id} invalid."}, 400))
-    event_info = Event_info.query.get(event_id)
-    if not event_info:
-        abort(make_response({"message": f"Event {event_id} not found."}, 404))
-    return event_info
-
 
 # Post one event:
 @event_info_bp.route("", methods = ["POST"])
@@ -33,14 +19,14 @@ def add_event():
         or "event_name" not in request_body \
             or "event_time_start" not in request_body \
                 or "event_address" not in request_body:
-        return jsonify({"details": "Invalid data"}),400
+        return jsonify({"Details": "Missing important data"}),400
 
     new_event = Event_info(event_date = request_body["event_date"], 
                         event_name = request_body["event_name"],
                         event_time_start = request_body["event_time_start"], 
                         event_address = request_body["event_address"],
                         event_time_end = request_body["event_time_end"],
-                        event_link = request_body["event_link"],
+                        event_link = None,
                         event_latitude = request_body["event_latitude"],
                         event_longitude = request_body["event_longitude"],
                         event_for_family = request_body["event_for_family"],
@@ -51,7 +37,7 @@ def add_event():
                         event_city = request_body["event_city"],
                         event_zipcode = request_body["event_zipcode"])
 
-    print(request_body)
+    # print(request_body)
     db.session.add(new_event)
     db.session.commit()
 
@@ -63,38 +49,78 @@ def add_event():
 # Get all events:
 @event_info_bp.route("", methods = ["GET"])
 def get_all_events(): 
-    all_events = Event_info.query.all()
+    date_query = request.args.get("event_date")
+    
+    if date_query:
+        all_events = Event_info.query.filter_by(event_date=date_query)
+        
+    else: 
+        all_events = Event_info.query.all()
     
     response = []
     for event in all_events:
+        print(event.event_date)
         response.append(event.to_dict())
-        
+    
     return jsonify(response), 200
 
-# Routes Get all the events by date
+# Get all the events by date
+# @event_info_bp.route("", methods=["GET"])
+# def get_one_event_date(event_date):
+    
+#     date_query = request.args.get("date")
+    
+#     if date_query:
+#         events = Event_info.query.filter_by(date=date_query)
+#     else:
+#         events = Event_info.query.all()
+
+#     events_response = []
+#     for event in events:
+#         events_response.append({
+#             "id": event.id,
+#             "title": book.title,
+#             "description": book.description
+#         })
+
+#     return jsonify(books_response)
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    #>>>>>>> one more <<<<<<<<<<
+    # chosen_event = get_event_or_abort(event_date) NOOOOOOO
+    
+    # chosen_event = Event_info.query.get(event_date)
+    # return jsonify({"Events" : chosen_event.to_dict()}), 200
 
 
-# Get one event route 
+# Get one event
 @event_info_bp.route("/<event_id>", methods=["GET"])
 def get_one_event(event_id):
     chosen_event = get_event_or_abort(event_id)  
     return jsonify(Event_info.to_dict(chosen_event)), 200
 
-# Then deleted a specific event 
+# Delete one specific event 
 @event_info_bp.route("/<event_id>", methods=["DELETE"])
 def delete_event(event_id):
     chosen_event = get_event_or_abort(event_id)
     db.session.delete(chosen_event)
     db.session.commit()
-    return jsonify(f"successfully deleted {chosen_event.event_name}"), 200
+    return jsonify(f"Successfully deleted '{chosen_event.event_name}' event"), 200
 
-# Get a patch to modify the event 
+# Modify attributes from one event (patch) 
 @event_info_bp.route("/<event_id>", methods=["PATCH"])
 def update_event_info(event_id):
     chosen_event = get_event_or_abort(event_id)
     
     request_body = request.get_json()
-    print(request_body)
+    # print(request_body)
     
     if "event_name" in request_body:
         chosen_event.event_name = request_body["event_name"]
@@ -143,7 +169,7 @@ def update_event_info(event_id):
     
     db.session.commit()
 
-    return jsonify({f"message": f"Successfully replaced event with id `{event_id}`"}), 200
+    return jsonify({"Message": f"Successfully updated information from event id #`{event_id}`"}), 200
 
 
 # Render the specific date and the events of true or false

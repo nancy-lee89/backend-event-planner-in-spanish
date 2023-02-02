@@ -10,18 +10,18 @@ class Event_info(db.Model):
     event_time_start = db.Column(db.DateTime)
     event_time_end = db.Column(db.DateTime)
 
-    event_link = db.Column(db.String)
+    event_link = db.Column(db.String, nullable=True)
 
     # The api only needs the logitude and latitude for the location 
-    event_latitude = db.Column(db.Integer)
-    event_longitude = db.Column(db.Integer)
+    event_latitude = db.Column(db.Float( 5,10 ))
+    event_longitude = db.Column(db.Float( 5,10 ))
 
     # Or should we have and then find a way to post true with a specific filter 
-    event_for_family = db.Column(db.Boolean)
-    event_for_adults = db.Column(db.Boolean)
-    event_a_concert = db.Column(db.Boolean)
-    event_free = db.Column(db.Boolean)
-    event_low_cost = db.Column(db.Boolean)
+    event_for_family = db.Column(db.Boolean, nullable=True)
+    event_for_adults = db.Column(db.Boolean, nullable=True)
+    event_a_concert = db.Column(db.Boolean, nullable=True)
+    event_free = db.Column(db.Boolean, nullable=True)
+    event_low_cost = db.Column(db.Boolean, nullable=True)
 
 
     # This can be information we give to the user say they can use it for refrence
