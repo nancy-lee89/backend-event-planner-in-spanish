@@ -15,12 +15,13 @@ event_info_bp = Blueprint("event_info_bp", __name__, url_prefix="/event_info")
 def add_event():
     
     request_body = request.get_json()
+    print(request_body)
     if "event_date" not in request_body \
         or "event_name" not in request_body \
             or "event_time_start" not in request_body \
                 or "event_address" not in request_body:
         return jsonify({"Details": "Missing important data"}),400
-
+        
     new_event = Event_info(event_date = request_body["event_date"], 
                         event_name = request_body["event_name"],
                         event_time_start = request_body["event_time_start"], 
@@ -37,12 +38,11 @@ def add_event():
                         event_city = request_body["event_city"],
                         event_zipcode = request_body["event_zipcode"])
 
-    # print(request_body)
     db.session.add(new_event)
     db.session.commit()
-
+    print(new_event.event_latitude)
     event_dict = new_event.to_dict()
-
+    print(event_dict)
     return jsonify(event_dict),201
 
 

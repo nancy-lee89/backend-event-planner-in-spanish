@@ -13,8 +13,9 @@ class Event_info(db.Model):
     event_link = db.Column(db.String, nullable=True)
 
     # The api only needs the logitude and latitude for the location 
-    event_latitude = db.Column(db.Float( 5,10 ))
-    event_longitude = db.Column(db.Float( 5,10 ))
+    event_latitude = db.Column(db.Numeric(precision=18, scale=10))
+    event_longitude = db.Column(db.Numeric(precision=18, scale=10))
+    
 
     # Or should we have and then find a way to post true with a specific filter 
     event_for_family = db.Column(db.Boolean, nullable=True)
@@ -38,8 +39,8 @@ class Event_info(db.Model):
                 "event_time_start": self.event_time_start, 
                 "event_time_end": self.event_time_end, 
                 "event_link": self.event_link, 
-                "event_latitude": self.event_latitude, 
-                "event_longitude": self.event_longitude,
+                "event_latitude": float(self.event_latitude), 
+                "event_longitude": float(self.event_longitude),
                 "event_for_family": self.event_for_family,
                 "event_for_adults": self.event_for_adults,
                 "event_a_concert": self.event_a_concert, 
