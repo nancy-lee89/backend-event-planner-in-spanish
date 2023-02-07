@@ -10,7 +10,7 @@ class Event_info(db.Model):
     event_time_start = db.Column(db.DateTime)
     event_time_end = db.Column(db.DateTime)
 
-    event_link = db.Column(db.String, nullable=True)
+    event_link = db.Column(db.String)
 
     # The api only needs the logitude and latitude for the location 
     event_latitude = db.Column(db.Numeric(precision=18, scale=10))

@@ -27,7 +27,7 @@ def add_event():
                         event_time_start = request_body["event_time_start"], 
                         event_address = request_body["event_address"],
                         event_time_end = request_body["event_time_end"],
-                        event_link = None,
+                        event_link = request_body["event_link"],
                         event_latitude = request_body["event_latitude"],
                         event_longitude = request_body["event_longitude"],
                         event_for_family = request_body["event_for_family"],
