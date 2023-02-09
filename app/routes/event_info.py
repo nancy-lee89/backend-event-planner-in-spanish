@@ -7,8 +7,6 @@ from ..routes.routes_helper import get_event_or_abort
 # The Blueprint 
 event_info_bp = Blueprint("event_info_bp", __name__, url_prefix="/event_info")
 
-# Routes Get all the events by date
-# Render the specific date and the events of true or false
 
 # Post one event:
 @event_info_bp.route("", methods = ["POST"])
@@ -63,42 +61,6 @@ def get_all_events():
         response.append(event.to_dict())
     
     return jsonify(response), 200
-
-# Get all the events by date
-# @event_info_bp.route("", methods=["GET"])
-# def get_one_event_date(event_date):
-    
-#     date_query = request.args.get("date")
-    
-#     if date_query:
-#         events = Event_info.query.filter_by(date=date_query)
-#     else:
-#         events = Event_info.query.all()
-
-#     events_response = []
-#     for event in events:
-#         events_response.append({
-#             "id": event.id,
-#             "title": book.title,
-#             "description": book.description
-#         })
-
-#     return jsonify(books_response)
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    #>>>>>>> one more <<<<<<<<<<
-    # chosen_event = get_event_or_abort(event_date) NOOOOOOO
-    
-    # chosen_event = Event_info.query.get(event_date)
-    # return jsonify({"Events" : chosen_event.to_dict()}), 200
-
 
 # Get one event
 @event_info_bp.route("/<event_id>", methods=["GET"])
@@ -172,4 +134,3 @@ def update_event_info(event_id):
     return jsonify({"Message": f"Successfully updated information from event id #`{event_id}`"}), 200
 
 
-# Render the specific date and the events of true or false
