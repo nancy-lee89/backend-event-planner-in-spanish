@@ -12,7 +12,7 @@
 
 
 
-## description of the application
+## Description of the application
 The purpose of this application is to create a backend for the event planner in Spanish. 
 
 
@@ -31,7 +31,7 @@ There is also a file that checks if the event information id and the contact inf
 - Postman
 - Python
 
-## list of dependencies (This should be found in the root file should be named requirements.txt)
+## List of dependencies (This should be found in the root file should be named requirements.txt)
 - alembic
 - attrs
 - autopep8
