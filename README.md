@@ -32,7 +32,7 @@ Postman
 Python
 
 ## list of dependencies (This should be found in the root file should be named requirements.txt)
-alembic==1.5.4
+- alembic
 attrs==20.3.0
 autopep8==1.5.5
 blinker==1.4
