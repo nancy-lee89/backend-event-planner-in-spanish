@@ -25,7 +25,7 @@ The second table created is used to store the information regarding the events. 
 
 There is also a file that checks if the event information id and the contact information id are valid. This can be useful when referencing an event or retrieving contact information.  
 
-## Technologies) 
+## Technologies
 
 - PostgresSQL
 - Postman
