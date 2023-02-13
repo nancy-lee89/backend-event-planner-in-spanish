@@ -2,11 +2,11 @@
 ## Instructions for setting up the application
 
 ## Table of Contents 
-	1. Managing Dependencies
-	2. Setting the Databases
-	3. Creating a '.env' File
-  	4. Run '$flask db init'
-	5. Run '$flask run'
+1. Managing Dependencies
+2. Setting the Databases
+3. Creating a '.env' File
+4. Run '$flask db init'
+5. Run '$flask run'
   
  
  ### Managing dependencies (Install dependencies at the root of your project where requirements.txt is available or this may cause issues in the future).
