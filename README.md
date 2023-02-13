@@ -3,8 +3,8 @@
 1. Description of the application
 2. Technologies 
 3. List of dependencies
-4. Instructions for setting up the application
-
+4. [Setup](backend-event-planner-in-spanish/setup.md)
+ 
 
 
 
