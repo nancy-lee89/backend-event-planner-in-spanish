@@ -4,11 +4,11 @@
 2. Technologies 
 3. List of dependencies
 4. Instructions for setting up the application
-  1. Managing Dependencies
-  2. Setting the Databases
-  3. Creating a '.env' File
-  4. Run '$flask db init'
-  5. Run '$flask run'
+  a. Managing Dependencies
+  b. Setting the Databases
+  c. Creating a '.env' File
+  d. Run '$flask db init'
+  e. Run '$flask run'
 
 
 
