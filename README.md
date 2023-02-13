@@ -23,6 +23,7 @@ There is also a file that checks if the event information id and the contact inf
 
 ## Technologies
 
+- Heroku
 - PostgresSQL
 - Postman
 - Python
