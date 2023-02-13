@@ -65,4 +65,4 @@ There is also a file that checks if the event information id and the contact inf
 - Werkzeug
 
 
-## Instructions for setting up the application
+
