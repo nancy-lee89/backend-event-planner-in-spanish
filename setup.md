@@ -1,7 +1,5 @@
 
 ## Instructions for setting up the application
-
-## Table of Contents 
 1. Managing Dependencies
 2. Setting the Databases
 3. Creating a '.env' File
