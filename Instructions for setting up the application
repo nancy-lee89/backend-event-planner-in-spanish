@@ -1,32 +1,41 @@
-## Instructions for setting up the application
+### Instructions for setting up the application
+## Table of Contents 
 	1. Managing Dependencies
 	2. Setting the Databases
 	3. Creating a '.env' File
-  4. Run '$flask db init'
+  	4. Run '$flask db init'
 	5. Run '$flask run'
   
  
  ### Managing dependencies (Install dependencies at the root of your project where requirements.txt is available or this may cause issues in the future).
 
-Create a virtual environment 
+1. Create a virtual environment 
+
 ```bash
 $ python3 -m venv venv
 ```
 
-Activate the environment (This step is used when activating your environment) 
+2. Activate the environment (This step is used when activating your environment) 
+
 ```bash
 $ source venv/bin/activate 
 ```
-Install the dependencies 
+
+3. Install the dependencies 
+
 ```bash
 $ pip install -r requirements.txt
 ```
+
 ### Setting the Databases (once connected the computer should have “postgres=#” next to the input.
-Download postgres
-Open postgres in your terminal 
+
+1. Download postgres
+2. Open postgres in your terminal 
+
 ```bash
 $ psql -U postgres
 ```
+
 Create a database
 ```bash
 $ CREATE DATABASE name_of_database;
