@@ -1,9 +1,9 @@
 # backend-event-planner-in-spanish
 ## Table of Contents 
-Description of the application
-Technologies 
-List of dependencies
-Instructions for setting up the application
+1. Description of the application
+2. Technologies 
+3. List of dependencies
+4. Instructions for setting up the application
   1. Managing Dependencies
   2. Setting the Databases
   3. Creating a '.env' File
