@@ -65,5 +65,10 @@ There is also a file that checks if the event information id and the contact inf
 - urllib3
 - Werkzeug
 
+## Setup 
+The setup infromation is found [here](setup.md). 
 
+## Deployment 
+- The data for the event information is found here (https://backend-event-planner-spanish.herokuapp.com/event_info). 
+- The data for the contact information is found here (https://backend-event-planner-spanish.herokuapp.com/contact_info). 
 
