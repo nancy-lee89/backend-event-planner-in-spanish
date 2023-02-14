@@ -27,10 +27,10 @@ $ source venv/bin/activate
 $ pip install -r requirements.txt
 ```
 
-### Setting the Databases (once connected the computer should have “postgres=#” next to the input.
+### Setting the Databases 
 
 1. Download postgres
-2. Open postgres in your terminal 
+2. Open postgres in your terminal (once connected to postgres the computer should have “postgres=#” next to the input)
 
 ```bash
 $ psql -U postgres
